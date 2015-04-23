@@ -1,0 +1,19 @@
+<template name="masterLayout">
+	<div class="layout master-layout {{$.Session.get 'sidebar'}}">
+		{{>header}}
+		<div class="container-fluid">
+			<div class="row">
+	        <!--Our sidebar will display navigation within the project-->
+	      {{>sidebar}}
+	      <div class="col-md-10">
+	          <!--Our yield will display the main content-->
+	        {{> yield}}
+	      </div>
+	    </div>
+		</div>
+		<div class="push"></div>
+		<div id="xs-sidebar-overlay" class="close-sidebar"></div>
+	</div>
+	{{> footer}}
+	{{> autoformModals}}
+</template>
