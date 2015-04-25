@@ -2,8 +2,8 @@
   <div id="example" class="panel">
     <ol class="breadcrumb">
       <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-      <li><a href="/dashboard"><i class="fa fa-cubes"></i> Projects</a></li>
-      <li class="active">{{name}}</li>
+      <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li class="active"><i class="fa fa-folder-open"></i> {{name}}</li>
     </ol>
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -11,17 +11,8 @@
       </div>
       <div class="panel-body">
         <div class="row">
-          <div class="col-md-3">
-            {{>uploads}}
-          </div>
-          <div class="col-md-9">
+          <div class="col-md-12">
             {{>addProspectForm}}
-            <div class="col-md-8">
-
-            </div>
-            <div class="col-md-4">
-              {{>invited}}
-            </div>
           </div>
         </div>
       </div>

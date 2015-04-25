@@ -20,6 +20,7 @@ Router.map(function() {
   });
   this.route("dashboard", {
     path: "/dashboard",
+    layoutTemplate: "dashboardLayout",
     waitOn:function(){
       Meteor.subscribe('projects', Meteor.userId());
     },
@@ -38,21 +39,39 @@ Router.map(function() {
       }
     },
   });
+  this.route('projectView',{
+    path:'/projects/:id',
+    layoutTemplate:'masterLayout',
+    loginRequired:'entrySignIn',
+    waitOn:function(){
+      Meteor.subscribe('prospects',this.params.id);
+      return Meteor.subscribe('projects');
+    },
+    data:function(){
+      Session.set('active_project',this.params.id);
+      return Projects.findOne({_id:this.params.id});
+    },
+    onAfterAction:function(){
+      SEO.set({
+        title:'Project View | ' + SEO.settings.title
+      })
+    }
+  });
   this.route("lists", {
     path: "/lists",
     layoutTemplate:'masterLayout',
     loginRequired: 'entrySignIn',
     waitOn:function(){
-      Meteor.subscribe('prospects');
+      Meteor.subscribe('prospects',Session.get('active_project'));
+      return Meteor.subscribe('projects');
     },
-    data:{
-      'propects':function(){
-        return Prospects.find({});
-      }
+    data:function(){
+        var thisProject = Session.get('active_project');
+      return Projects.findOne({_id:thisProject});
     },
     onAfterAction: function() {
       SEO.set({
-        title: 'Customers | ' + SEO.settings.title
+        title: 'Lists | ' + SEO.settings.title
       });
     }
   });
@@ -70,7 +89,7 @@ Router.map(function() {
     },
     onAfterAction: function() {
       SEO.set({
-        title: 'Customers | ' + SEO.settings.title
+        title: 'Master List | ' + SEO.settings.title
       });
     }
   });
@@ -104,23 +123,7 @@ Router.map(function() {
       return Meteor.subscribe('directory');
     }
   });
-  this.route('projectView',{
-    path:'/projects/:id',
-    layoutTemplate:'masterLayout',
-    loginRequired:'entrySignIn',
-    waitOn:function(){
-      return Meteor.subscribe('projects');
-    },
-    data:function(){
-      Session.set('active_project',this.params.id);
-      return Projects.findOne({_id:this.params.id});
-    },
-    onAfterAction:function(){
-      SEO.set({
-        title:'Project View | ' + SEO.settings.title
-      })
-    }
-  });
+
   this.route('profile', {
     path: '/profile',
     layoutTemplate:'nosidebar',

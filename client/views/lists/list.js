@@ -8,6 +8,15 @@ AutoForm.hooks({
     onError: function(operation, error) {
       return App.alertError(error);
     }
+  },
+  addProspectForm:{
+    before: {
+    insert: function(doc) {
+      doc.project = Session.get('active_project');
+
+      return doc;
+    }
+  }
   }
 });
 

@@ -24,14 +24,6 @@ this.Config = {
     twitter: {
       url: 'http://twitter.com/BenPeterJones',
       icon: 'twitter'
-    },
-    github: {
-      url: 'http://github.com/yogiben',
-      icon: 'github'
-    },
-    info: {
-      url: 'http://meteorfactory.io',
-      icon: 'link'
     }
   },
   publicRoutes: ['home']

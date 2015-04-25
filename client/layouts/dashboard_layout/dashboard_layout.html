@@ -1,0 +1,16 @@
+<template name="dashboardLayout">
+	<div class="layout master-layout {{$.Session.get 'sidebar'}}">
+		{{>header}}
+		<div class="container-fluid">
+			<div class="row">
+	      <div class="col-md-12">
+	        {{> yield}}
+	      </div>
+	    </div>
+		</div>
+		<div class="push"></div>
+		<div id="xs-sidebar-overlay" class="close-sidebar"></div>
+	</div>
+	{{> footer}}
+	{{> autoformModals}}
+</template>

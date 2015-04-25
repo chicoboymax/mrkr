@@ -39,10 +39,45 @@ Schemas.Prospects = new SimpleSchema({
   'address.postalCode': {
     type: String,
     optional: true
+  },
+  project: {
+    autoform: {
+      omit: true
+    },
+    type: String,
+  },
+  createdAt: {
+    autoform: {
+      omit: true
+    },
+    type: Date,
+    autoValue: function() {
+      if (this.isInsert) {
+        return new Date();
+      }
+    }
+  },
+  updatedAt: {
+    autoform: {
+      omit: true
+    },
+    type: Date,
+    optional: true,
+    autoValue: function() {
+      if (this.isUpdate) {
+        return new Date();
+      }
+    }
   }
 });
 
 ({
+  project: {
+    type: String,
+    autoValue: function() {
+      return Session.get('active_project');
+    }
+  },
   createdAt: {
     type: Date,
     autoValue: function() {
