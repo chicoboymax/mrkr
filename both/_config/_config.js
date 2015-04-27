@@ -11,8 +11,8 @@ this.Config = {
   emails: {
     from: 'noreply@' + Meteor.absoluteUrl()
   },
-  blog: 'http://meteorfactory.io',
-  about: 'http://meteorfactory.io',
+  blog: '',
+  about: '',
   username: false,
   homeRoute: '/',
   dashboardRoute: '/dashboard',

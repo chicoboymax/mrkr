@@ -57,17 +57,35 @@ Router.map(function() {
       })
     }
   });
-  this.route("lists", {
-    path: "/lists",
+  this.route('addProspects',{
+    path:'/projects/:_id/addProspects',
     layoutTemplate:'masterLayout',
-    loginRequired: 'entrySignIn',
+    loginRequired:'entrySignIn',
     waitOn:function(){
-      Meteor.subscribe('prospects',Session.get('active_project'));
+      Meteor.subscribe('prospects',this.params._id);
       return Meteor.subscribe('projects');
     },
     data:function(){
-        var thisProject = Session.get('active_project');
-      return Projects.findOne({_id:thisProject});
+      Session.set('active_project',this.params._id);
+      return Projects.findOne({_id:this.params._id});
+    },
+    onAfterAction:function(){
+      SEO.set({
+        title:'Project View | ' + SEO.settings.title
+      })
+    }
+  });
+  this.route("lists", {
+    path: "/projects/:_id/lists",
+    layoutTemplate:'masterLayout',
+    loginRequired: 'entrySignIn',
+    waitOn:function(){
+      Meteor.subscribe('prospects',this.params._id);
+      return Meteor.subscribe('projects');
+    },
+    data:function(){
+      Session.set('active_project',this.params._id);
+      return Projects.findOne({_id:this.params._id});
     },
     onAfterAction: function() {
       SEO.set({
@@ -76,16 +94,16 @@ Router.map(function() {
     }
   });
   this.route("masterlist", {
-    path: "/masterlist",
+    path: "/projects/:_id/masterlist",
     layoutTemplate:'masterLayout',
     loginRequired: 'entrySignIn',
     waitOn:function(){
-      Meteor.subscribe('prospects');
+      Meteor.subscribe('prospects',this.params._id);
+      return Meteor.subscribe('projects');
     },
-    data:{
-      'propects':function(){
-        return Prospects.find({});
-      }
+    data:function(){
+      Session.set('active_project',this.params._id);
+      return Projects.findOne({_id:this.params._id});
     },
     onAfterAction: function() {
       SEO.set({

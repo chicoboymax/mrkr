@@ -38,8 +38,9 @@ spiderable
 accounts-facebook
 accounts-google
 accounts-twitter
-bootstrap
 accounts-ui
 
 jparker:gravatar
 cfs:filesystem
+twbs:bootstrap
+aslagle:reactive-table

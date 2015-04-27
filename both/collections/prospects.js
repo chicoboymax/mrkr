@@ -71,30 +71,4 @@ Schemas.Prospects = new SimpleSchema({
   }
 });
 
-({
-  project: {
-    type: String,
-    autoValue: function() {
-      return Session.get('active_project');
-    }
-  },
-  createdAt: {
-    type: Date,
-    autoValue: function() {
-      if (this.isInsert) {
-        return new Date();
-      }
-    }
-  },
-  updatedAt: {
-    type: Date,
-    optional: true,
-    autoValue: function() {
-      if (this.isUpdate) {
-        return new Date();
-      }
-    }
-  }
-});
-
 Prospects.attachSchema(Schemas.Prospects);
