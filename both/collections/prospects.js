@@ -9,36 +9,51 @@ Schemas.Prospects = new SimpleSchema({
     type: Object
   },
   'contacts.$.name': {
-    type: String
+    type: String,
+    max: 50
   },
   'contacts.$.phone': {
-    type: String
+    type: String,
+    max: 10
+  },
+  'contacts.$.email': {
+    type: String,
+    optional: true,
+    regEx: SimpleSchema.RegEx.Email,
+    max: 50
   },
   'contacts.$.notes': {
-    type: String
+    type: String,
+    max: 500
   },
   address: {
     type: Object
   },
   'address.streetNumber': {
-    type: String
+    type: String,
+    max: 50
   },
   'address.streetName': {
-    type: String
+    type: String,
+    max: 100
   },
   'address.streetApp': {
     type: String,
-    optional: true
+    optional: true,
+    max: 50
   },
   'address.city': {
-    type: String
+    type: String,
+    max: 50
   },
   'address.province': {
-    type: String
+    type: String,
+    max: 50
   },
   'address.postalCode': {
     type: String,
-    optional: true
+    optional: true,
+    max: 6
   },
   project: {
     autoform: {

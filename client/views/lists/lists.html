@@ -21,10 +21,10 @@
 					<tr>
 						<td id="prospectListActions">
 							{{#afModal title="Update prospect" omitFields="createdAt,updatedAt,owner" class="text-primary" collection="Prospects" operation="update" doc=_id}}
-							<i class="fa fa-pencil editRem" buttonContent="Edit prospect"></i>
+							<button type ="button" class="btn btn-primary navbar-btn"><i class="fa fa-pencil editRem" buttonContent="Edit prospect"></i></button>
 							{{/afModal}}
 							{{#afModal title="Delete prospect" class="text-danger" collection="Prospects" operation="remove" doc=_id}}
-							<i class="fa fa-times editRem" buttonContent="Delete prospect"></i>
+							<button type ="button" class="btn btn-danger navbar-btn"><i class="fa fa-times editRem" buttonContent="Delete prospect"></i></button>
 							{{/afModal}}
 							</td>
 						{{#with address}}

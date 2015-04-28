@@ -16,7 +16,8 @@ Router.configure({
 Router.map(function() {
   this.route("home", {
     path: "/",
-    layoutTemplate: "homeLayout"
+    layoutTemplate: "homeLayout",
+    fastRender: true
   });
   this.route("dashboard", {
     path: "/dashboard",
@@ -113,12 +114,14 @@ Router.map(function() {
   });
   this.route("profile", {
     path: "/profile",
+    layoutTemplate:'dashboardLayout',
     waitOn: function() {
       return Meteor.subscribe('profilePictures');
     }
   });
   this.route("account", {
     path: "/account",
+    layoutTemplate:'dashboardLayout',
     onStop: function() {
       return Alert.clear();
     }

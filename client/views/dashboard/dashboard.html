@@ -30,8 +30,6 @@
 		<div class="panel-heading">
 			<h3 class="panel-title">
 				<p class="pull-right">
-					<!-- We need to click this trash can to prompt for deletion -->
-					<i class="fa fa-trash deleteConfirmation"></i>
 				</p>
 				<p>
 					<h5>
@@ -41,9 +39,13 @@
 			</h3>
 		</div>
 		<div class="panel-body">
-			<small>
-				Created on {{formatdate dateentered}}
-			</small>
+
+			<p>
+				<small>
+					Created on {{formatdate dateentered}}
+				</small>
+				<i class="fa fa-trash deleteConfirmation"></i>
+			</p>
 		</div>
 
 	</div>
