@@ -16,6 +16,7 @@ anti:i18n@0.4.3
 aslagle:reactive-table@0.7.4
 autoupdate@1.2.1
 base64@1.0.3
+bengott:avatar@0.7.6
 binary-heap@1.0.3
 blaze@2.1.2
 blaze-tools@1.0.3
@@ -121,6 +122,7 @@ spacebars@1.0.6
 spacebars-compiler@1.0.6
 spiderable@1.0.7
 srp@1.0.3
+stylus@1.0.7
 templating@1.1.1
 tracker@1.0.7
 twbs:bootstrap@3.3.4

@@ -22,6 +22,7 @@ Router.map(function() {
   this.route("dashboard", {
     path: "/dashboard",
     layoutTemplate: "dashboardLayout",
+    fastRender: true,
     waitOn:function(){
       Meteor.subscribe('projects', Meteor.userId());
     },
@@ -43,6 +44,7 @@ Router.map(function() {
   this.route('projectView',{
     path:'/projects/:id',
     layoutTemplate:'masterLayout',
+    fastRender: true,
     loginRequired:'entrySignIn',
     waitOn:function(){
       Meteor.subscribe('prospects',this.params.id);
@@ -61,6 +63,7 @@ Router.map(function() {
   this.route('addProspects',{
     path:'/projects/:_id/addProspects',
     layoutTemplate:'masterLayout',
+    fastRender: true,
     loginRequired:'entrySignIn',
     waitOn:function(){
       Meteor.subscribe('prospects',this.params._id);
@@ -79,6 +82,7 @@ Router.map(function() {
   this.route("lists", {
     path: "/projects/:_id/lists",
     layoutTemplate:'masterLayout',
+    fastRender: true,
     loginRequired: 'entrySignIn',
     waitOn:function(){
       Meteor.subscribe('prospects',this.params._id);
@@ -97,6 +101,7 @@ Router.map(function() {
   this.route("masterlist", {
     path: "/projects/:_id/masterlist",
     layoutTemplate:'masterLayout',
+    fastRender: true,
     loginRequired: 'entrySignIn',
     waitOn:function(){
       Meteor.subscribe('prospects',this.params._id);

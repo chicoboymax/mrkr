@@ -28,7 +28,7 @@ Template.masterlist.helpers({
         }, {
           'key': 'address.postalCode',
           label: 'Postal Code'
-        }, {
+        },  {
           'key': 'contacts.0.name',
           label: 'Name'
         }, {
