@@ -40,9 +40,8 @@ accounts-google
 accounts-twitter
 accounts-ui
 
-jparker:gravatar
 cfs:filesystem
 twbs:bootstrap
-aslagle:reactive-table
 meteorhacks:fast-render
-bengott:avatar
+reactive-var
+aldeed:tabular

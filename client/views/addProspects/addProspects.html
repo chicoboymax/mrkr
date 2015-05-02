@@ -9,7 +9,7 @@
     <div class="panel panel-primary ">
       <div class="panel-heading"><h4>Add prospects to the {{name}} project</h4></div>
       <div>
-        {{> addProspectForm}}
+        {{> addProspectFormGoogle}}
       </div>
 
     </div>
@@ -18,4 +18,17 @@
 
 <template name="addProspectForm">
 		{{> quickForm collection="Prospects" id="addProspectForm" type="insert"}}
+</template>
+
+
+<template name="addProspectFormGoogle">
+  {{#autoForm collection="Prospects" id="addProspectFormGoogle" type="insert"}}
+    <fieldset>
+      {{> afQuickField name='contacts'}}
+      {{> afQuickField name="address" type="googleplace" opts=optsGoogleplace}}
+      {{> afQuickField name="address.unit"}}
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  {{/autoForm}}
+
 </template>

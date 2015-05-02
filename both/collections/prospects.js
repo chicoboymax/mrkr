@@ -26,35 +26,44 @@ Schemas.Prospects = new SimpleSchema({
     type: String,
     max: 500
   },
-  address: {
-    type: Object
+  'address.$': {
+    type: Object,
+    optional: true
   },
-  'address.streetNumber': {
-    type: String,
-    max: 50
+  'address.fullAddress': {
+    type: String
   },
-  'address.streetName': {
+  'address.lat': {
+    type: Number,
+    decimal: true
+  },
+  'address.lng': {
+    type: Number,
+    decimal: true
+  },
+  'address.street': {
     type: String,
     max: 100
-  },
-  'address.streetApp': {
-    type: String,
-    optional: true,
-    max: 50
   },
   'address.city': {
     type: String,
     max: 50
   },
-  'address.province': {
-    type: String,
-    max: 50
+  'address.state': {
+    type: String
   },
-  'address.postalCode': {
+  'address.zip': {
+    type: String
+  },
+  'address.country': {
+    type: String
+  },
+  'address.unit': {
     type: String,
     optional: true,
-    max: 6
+    max: 50
   },
+
   project: {
     autoform: {
       omit: true
@@ -87,3 +96,22 @@ Schemas.Prospects = new SimpleSchema({
 });
 
 Prospects.attachSchema(Schemas.Prospects);
+
+TabularTables = {};
+
+Meteor.isClient && Template.registerHelper('TabularTables', TabularTables);
+
+TabularTables.Prospects = new Tabular.Table({
+  name: "MasterList",
+  collection: Prospects,
+  columns: [
+    {data: "address.street", title: "Street"},
+    {data: "address.unit", title: "Unit"},
+    {data: "address.city", title: "City"},
+    {data: "address.state", title: "State"},
+    {data: "address.zip", title: "ZIP/PC"},
+    {width: "50%", data: "contacts.[]", title: "Contacts",
+      tmpl: Meteor.isClient && Template.contacts
+  }
+  ]
+});

@@ -17,7 +17,16 @@ AutoForm.hooks({
       return doc;
     }
   }
+},
+addProspectFormGoogle:{
+  before: {
+  insert: function(doc) {
+    doc.project = Session.get('active_project');
+
+    return doc;
   }
+}
+}
 });
 
 Template.addProspectForm.helpers({
@@ -28,23 +37,24 @@ Template.addProspectForm.helpers({
       showFilter: true,
       fields: [
         {
-          'key': 'address.streetNumber',
-          label: 'Street Number'
+          'key': 'address.fullAddress',
+          label: 'Address'
+        },
+        {
+          'key': 'address.street',
+          label: 'Street'
         }, {
-          'key': 'address.streetName',
-          label: 'Street Name'
-        }, {
-          'key': 'address.streetApp',
-          label: 'App.'
+          'key': 'address.unit',
+          label: 'Unit'
         }, {
           'key': 'address.city',
           label: 'City'
         }, {
-          'key': 'address.province',
-          label: 'Province'
+          'key': 'address.state',
+          label: 'State'
         }, {
-          'key': 'address.postalCode',
-          label: 'Postal Code'
+          'key': 'address.zip',
+          label: 'Zip/PC'
         }, {
           'key': 'contacts.0.name',
           label: 'Name'
