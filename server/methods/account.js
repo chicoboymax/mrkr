@@ -26,7 +26,7 @@ Meteor.methods({
     if(!project.datedue){
       project.datedue = new Date();
     }
-    project.invited = [];
+    project.members = [];
     return Projects.insert(project);
   },
   'removeProject':function(id){
@@ -71,8 +71,8 @@ Meteor.methods({
     if(!project || project.userId !== this.userId){
       throw new Meteor.Error(404,"No Such Project !");
     }
-    if(userId !== project.userId && !_.contains(project.invited,userId)){
-      Projects.update(projectid,{$addToSet:{invited:userId}});
+    if(userId !== project.userId && !_.contains(project.members,userId)){
+      Projects.update(projectid,{$addToSet:{members:userId}});
     }
   },
   'removeInvite':function(projectid,userId){
@@ -80,7 +80,7 @@ Meteor.methods({
     if(!project || project.userId !== this.userId){
       throw new Meteor.Error(404,"No Such Project !");
     }
-    Projects.update(projectid,{$pull:{invited:userId}});
+    Projects.update(projectid,{$pull:{members:userId}});
   },
   addToRole:function(user,role){
     var loggedInUser = Meteor.user();

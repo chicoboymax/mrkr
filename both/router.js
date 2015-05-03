@@ -48,6 +48,7 @@ Router.map(function() {
     loginRequired:'entrySignIn',
     waitOn:function(){
       Meteor.subscribe('prospects',this.params.id);
+      Meteor.subscribe('directory');
       return Meteor.subscribe('projects');
     },
     data:function(){
