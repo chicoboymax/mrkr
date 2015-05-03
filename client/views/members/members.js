@@ -2,7 +2,7 @@ Template.members.helpers({
   'userList':function(){
     return Meteor.users.find({},{});
   },
-  'invited':function(){
+  'members':function(){
     var project = Projects.findOne({_id:Session.get('active_project')});
     return Meteor.users.find({_id:{$in:project.members}});
   },

@@ -13,7 +13,7 @@ this.Config = {
   },
   blog: '',
   about: '',
-  username: false,
+  username: true,
   homeRoute: '/',
   dashboardRoute: '/dashboard',
   socialMedia: {
