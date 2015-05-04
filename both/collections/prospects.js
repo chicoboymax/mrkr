@@ -26,10 +26,6 @@ Schemas.Prospects = new SimpleSchema({
     type: String,
     max: 500
   },
-  'address.$': {
-    type: Object,
-    optional: true
-  },
   'address.fullAddress': {
     type: String
   },

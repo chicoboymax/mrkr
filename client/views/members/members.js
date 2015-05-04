@@ -11,8 +11,10 @@ Template.members.helpers({
   }
 });
 Template.members.events({
-  'click .inviteUser':function(evt,tmpl){
-    var user = tmpl.find('#userToInvite').value;
+  'click .userToInvite':function(evt,tmpl){
+    var user = evt.target.getAttribute('value');
+    //var user = $('.inviteUser').closest('li').attr('value');
+    //console.log(user);
     var project = Session.get('active_project');
     Meteor.call('inviteUser',project,user);
   },
@@ -22,3 +24,24 @@ Template.members.events({
     Meteor.call('removeInvite',project,user);
   }
 })
+
+EasySearch.createSearchIndex('users', {
+  field: 'username',
+  collection: Meteor.users,
+  use: 'mongo-db',
+  query: function (searchString, opts) {
+    // Default query that is used for searching
+    var query = EasySearch.getSearcher(this.use).defaultQuery(this, searchString);
+
+    // Make the emails searchable
+    query.$or.push({
+      emails: {
+        $elemMatch: {
+          address: { '$regex' : '.*' + searchString + '.*', '$options' : 'i' }
+        }
+      }
+    });
+
+    return query;
+  }
+});

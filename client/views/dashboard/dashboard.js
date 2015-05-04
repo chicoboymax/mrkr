@@ -27,6 +27,3 @@ Template.delconfirm.events({
     Session.set('projectToDelete',null);
   }
 })
-Template.projectView.helpers({
-
-})
