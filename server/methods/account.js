@@ -37,35 +37,6 @@ Meteor.methods({
 
     return Projects.update({_id: id}, {$set: {name: name}});
   },
-  'updateProjectCustomer': function (project, id) {
-    return Projects.update({_id: project}, {
-      $set: {
-        customer: id
-      }
-    });
-  },
-  'updateProjectDate': function (project, date) {
-    return Projects.update({_id: project}, {
-      $set: {
-        datedue: date
-      }
-    });
-  },
-  'addCustomer': function (name) {
-    return Customers.insert({name: name});
-  },
-  'updateCustomerName': function (id, name) {
-    return Customers.update({_id: id}, {$set: {name: name}});
-  },
-  'updateCustomerPhone': function (id, phone) {
-    return Customers.update({_id: id}, {$set: {phone: phone}});
-  },
-  'updateCustomerContact': function (id, contact) {
-    return Customers.update({_id: id}, {$set: {contact: contact}});
-  },
-  'removeCustomer': function (id) {
-    return Customers.remove({_id: id});
-  },
   'inviteUser':function(projectid,userId){
     var project = Projects.findOne({_id:projectid});
     if(!project || project.userId !== this.userId){
@@ -91,5 +62,22 @@ Meteor.methods({
   },
   removeFromRole:function(user,role){
       Roles.removeUsersFromRoles(user,role);
+  },
+
+  'saveList':function(list, projectid){
+    check(list.name,String);
+    list.projectId = projectid;
+    list.dateentered = new Date();
+    list.lastupdate = new Date();
+    list.assignedTo = [];
+    return Lists.insert(list);
+  },
+  'removeList':function(id){
+
+    return Lists.remove({_id:id});
+  },
+  'updateListName': function (id, name) {
+
+    return Lists.update({_id: id}, {$set: {name: name}});
   }
 });

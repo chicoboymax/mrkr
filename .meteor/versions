@@ -39,7 +39,6 @@ cfs:tempstore@0.1.5
 cfs:upload-http@0.0.20
 cfs:worker@0.1.4
 check@1.0.5
-chrismbeckett:fontawesome4@4.2.2
 chuangbo:cookie@1.1.0
 cmather:handlebars-server@0.2.0
 coffeescript@1.0.6
@@ -133,9 +132,9 @@ webapp@1.2.0
 webapp-hashing@1.0.3
 yogiben:admin@1.1.1
 yogiben:alerts@0.0.2
-yogiben:autoform-file@0.2.1
+yogiben:autoform-file@0.2.5
 yogiben:autoform-map@0.0.4
-yogiben:autoform-modals@0.3.2
+yogiben:autoform-modals@0.3.3
 yogiben:comments@0.1.0
 yogiben:favorites@0.0.4
 yogiben:helpers@0.0.6

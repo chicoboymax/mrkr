@@ -10,3 +10,6 @@ Meteor.publish(null,function(){
 Meteor.publish('directory',function(){
   return Meteor.users.find();
 });
+Meteor.publish('lists',function(project){
+  return Lists.find({projectId:project});
+});

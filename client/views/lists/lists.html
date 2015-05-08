@@ -1,10 +1,4 @@
-<template name="lists">
-	<ol class="breadcrumb">
-		<li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-		<li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-		<li><a href="/projects/{{_id}}"><i class="fa fa-folder-open"></i> {{name}}</a></li>
-		<li class="active"><i class="fa fa-list-alt"></i> Lists</li>
-	</ol>
+<template name="listzzz">
 	<div class="panel panel-primary ">
 		<div class="panel-heading"><h4>List of prospects in the {{name}} project</h4></div>
 		<div id="prospectList" class="table-responsive">
@@ -72,4 +66,55 @@
 		<td>{{notes}}</td>
 	</tr>
 	{{/each}}
+</template>
+
+<template name="lists">
+	<ol class="breadcrumb">
+		<li><a href="{{pathFor 'home'}}"><i class="fa fa-home"></i> Home</a></li>
+		<li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li><a href="/projects/{{_id}}"><i class="fa fa-folder-open"></i> {{name}}</a></li>
+		<li class="active"><i class="fa fa-list-alt"></i> Lists</li>
+	</ol>
+	<div class="page-header">
+		<!-- We added css to make this input look cloaked -->
+		<p>
+			<input class="biginput" type="text" name="listNameEnter" id="listNameEnter" placeholder="Add A List" value="">
+		</p>
+	</div>
+	<div>
+		{{#each list}}
+		{{#if listToDelete}}
+			{{>listDelConfirm}}
+		{{/if}}
+	<div class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<p class="pull-right">
+					</p>
+					<p>
+						<h5>
+							<a href="/lists/{{_id}}"><h3>{{name}}</h3></a>
+						</h5>
+					</p>
+				</h3>
+			</div>
+			<div class="panel-body">
+				<p>
+					<small>
+						Created on {{formatdate dateentered}}
+					</small>
+					<i class="fa fa-trash  deleteConfirmation"></i>
+
+				</p>
+			</div>
+
+		</div>
+	</div>
+		{{else}}
+				<h4>No Lists Found !</h4>
+		{{/each}}
+		<div>
+	</div>
+	</div>
 </template>

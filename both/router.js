@@ -13,6 +13,7 @@ Router.configure({
   }
 });
 
+
 Router.map(function() {
   this.route("home", {
     path: "/",
@@ -39,7 +40,7 @@ Router.map(function() {
       'projects': function(){
         return Projects.find();
       }
-    },
+    }
   });
   this.route('projectView',{
     path:'/projects/:id',
@@ -86,8 +87,10 @@ Router.map(function() {
     fastRender: true,
     loginRequired: 'entrySignIn',
     waitOn:function(){
-      Meteor.subscribe('prospects',this.params._id);
+      //Meteor.subscribe('prospects',this.params._id);
+      Meteor.subscribe('lists',this.params._id);
       return Meteor.subscribe('projects');
+
     },
     data:function(){
       Session.set('active_project',this.params._id);

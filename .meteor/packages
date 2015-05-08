@@ -12,8 +12,6 @@ aldeed:autoform
 alanning:roles
 aldeed:collection2
 aldeed:simple-schema
-joshowens:accounts-entry
-chrismbeckett:fontawesome4
 raix:handlebar-helpers
 cfs:standard-packages
 cfs:gridfs
@@ -41,9 +39,11 @@ accounts-twitter
 accounts-ui
 
 cfs:filesystem
-twbs:bootstrap
 meteorhacks:fast-render
 reactive-var
 aldeed:tabular
 jparker:gravatar
 matteodem:easy-search
+twbs:bootstrap
+fortawesome:fontawesome
+joshowens:accounts-entry
