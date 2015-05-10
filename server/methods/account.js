@@ -26,7 +26,7 @@ Meteor.methods({
     if(!project.datedue){
       project.datedue = new Date();
     }
-    project.members = [];
+    project.members = [project.userId];
     return Projects.insert(project);
   },
   'removeProject':function(id){

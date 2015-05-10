@@ -82,39 +82,63 @@
 		</p>
 	</div>
 	<div>
-		{{#each list}}
 		{{#if listToDelete}}
-			{{>listDelConfirm}}
+		{{>listDelConfirm}}
 		{{/if}}
-	<div class="col-md-3">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">
-					<p class="pull-right">
-					</p>
-					<p>
-						<h5>
-							<a href="/lists/{{_id}}"><h3>{{name}}</h3></a>
-						</h5>
-					</p>
-				</h3>
+		<div class="panel panel-primary ">
+			<div class="panel-heading"><h4>Lists in the {{name}} project</h4></div>
+			<div id="assignementList" class="table-responsive">
+				<table class="table table-condensed">
+					<thead>
+						<tr>
+							<th class="row-address">List Name</th>
+							<th>Assigned To</th>
+							<th>Assignment Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each list}}
+						<tr>
+							<td>
+								<p id="listName">
+									{{name}}
+								</p>
+							</td>
+							<td>
+								<p id="assignedTo">
+									{{>assigned}}
+								</p>
+							</td>
+							<td>
+								<p id="assignmentDate">
+									{{formatdate lastupdate}}
+								</p>
+							</td>
+						</tr>
+						{{else}}
+						<h4>No Lists Found !</h4>
+						{{/each}}
+					</tbody>
+				</table>
 			</div>
-			<div class="panel-body">
-				<p>
-					<small>
-						Created on {{formatdate dateentered}}
-					</small>
-					<i class="fa fa-trash  deleteConfirmation"></i>
-
-				</p>
-			</div>
-
+		</div>
+		<div>
 		</div>
 	</div>
-		{{else}}
-				<h4>No Lists Found !</h4>
+</template>
+
+
+<template name="assigned">
+	<select  name="userToInvite" id="userToInvite">
+		<option selected disabled hidden value=''></option>
+		{{#each members}}
+		<option value="{{_id}}">{{username}}</option>
 		{{/each}}
-		<div>
-	</div>
-	</div>
+	</select>
+	<i class="fa fa-plus inviteUser"></i>
+	{{#each assignedTo}}
+	<tr><td width="250px">{{username}}</td>
+		<td>{{#if isowner ..}} <i class="fa fa-trash removeUser"></i>{{/if}}</td>
+	</tr>
+	{{/each}}
 </template>

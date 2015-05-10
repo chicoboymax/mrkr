@@ -80,6 +80,13 @@ Template.lists.helpers({
   list: function() {
     return Lists.find();
   }
+});
+
+Template.assigned.helpers({
+  members: function() {
+    var project = Projects.findOne({_id:Session.get('active_project')});
+    return Meteor.users.find({_id:{$in:project.members}});
+  }
 
 });
 
