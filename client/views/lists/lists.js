@@ -118,20 +118,5 @@ Template.lists.events({
       var project = Session.get('active_project');
       Meteor.call('saveList',list,project);
     }
-  },
-  'click .deleteConfirmation':function(evt,tmpl){
-    evt.preventDefault();
-    evt.stopPropagation();
-    Session.set('listToDelete',this._id);
-  },
-  'click .cancelDelete':function(){
-    return Session.set('listToDelete',null);
   }
 });
-
-Template.listDelConfirm.events({
-  'click .deleteConfirmed':function(evt,tmpl){
-    Meteor.call('removeList',Session.get('listToDelete'));
-    Session.set('listToDelete',null);
-  }
-})
