@@ -1,7 +1,7 @@
 Template.projectPanelHeading.helpers({
   editing_projectname: function () {
     return Session.get('editing_projectname');
-  },
+  }
 })
 Template.projectPanelHeading.events({
   'click .projectNameEdit': function (evt, tmpl) {

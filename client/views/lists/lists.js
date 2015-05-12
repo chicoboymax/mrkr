@@ -86,9 +86,26 @@ Template.assigned.helpers({
   members: function() {
     var project = Projects.findOne({_id:Session.get('active_project')});
     return Meteor.users.find({_id:{$in:project.members}});
+  },
+  assignedTo:function(){
+    var list = Lists.findOne({_id:this._id});
+    return Meteor.users.find({_id:{$in:list.assignedTo}});
   }
-
 });
+
+
+Template.assigned.events({
+  'click .assignUser':function(evt,tmpl){
+    var user = tmpl.find('.userToAssign').value;
+    var list = $(evt.currentTarget).closest('.eachList').attr('value');
+    Meteor.call('assignUser',list,user);
+  },
+  'click .removeAssignment':function(evt,tmpl){
+    var user = this._id;
+    var list = $(evt.currentTarget).closest('.eachList').attr('value');
+    Meteor.call('removeAssignment',list,user);
+  }
+})
 
 
 

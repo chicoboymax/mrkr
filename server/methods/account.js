@@ -79,5 +79,20 @@ Meteor.methods({
   'updateListName': function (id, name) {
 
     return Lists.update({_id: id}, {$set: {name: name}});
+  },
+  'assignUser':function(listid,userId){
+    var list = Lists.findOne({_id:listid});
+    if(!list){
+      throw new Meteor.Error(404,"No Such List !");
+    }
+    if(!_.contains(list.assignedTo,userId)){Lists.update(listid,{$addToSet:{assignedTo:userId}});
+    }
+  },
+  'removeAssignment':function(listid,userId){
+    var list = Lists.findOne({_id:listid});
+    if(!list){
+      throw new Meteor.Error(404,"No Such List !");
+    }
+    Lists.update(listid,{$pull:{assignedTo:userId}});
   }
 });
