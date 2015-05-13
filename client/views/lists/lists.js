@@ -89,7 +89,7 @@ Template.assigned.helpers({
   },
   assignedTo:function(){
     var list = Lists.findOne({_id:this._id});
-    return Meteor.users.find({_id:{$in:list.assignedTo}});
+    return Meteor.users.find({_id:list.assignedTo});
   }
 });
 
