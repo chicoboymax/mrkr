@@ -21,8 +21,12 @@ Meteor.methods({
     if(!list){
       throw new Meteor.Error(404,"No Such List !");
     }
-    if(list.assignedTo !== userId){Lists.update(listid,{$set:{assignedTo:userId}});
+    if(list.assignedTo !== userId && userId){
+      var assignmentDate = new Date();
+      Lists.update(listid,{$set:{assignedTo:userId}});
+      Lists.update(listid,{$set:{assignedAt:assignmentDate}});
     }
+
   },
   'removeAssignment':function(listid,userId){
     var list = Lists.findOne({_id:listid});
@@ -30,5 +34,6 @@ Meteor.methods({
       throw new Meteor.Error(404,"No Such List !");
     }
     Lists.update(listid,{$set:{assignedTo:""}});
+    Lists.update(listid,{$set:{assignedAt:""}});
   }
 });
