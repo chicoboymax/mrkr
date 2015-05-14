@@ -20,7 +20,7 @@
             <h2>My Lists</h2>
             {{#each myLists}}
             <div class="panel panel-primary ">
-              <div class="panel-heading"><h4>List {{name}}</h4></div>
+              <div class="panel-heading"><h4>{{name}}</h4></div>
               <div id="prospectList" class="table-responsive">
                 <table class="table table-condensed">
                   <thead>
@@ -28,18 +28,15 @@
                       <th class="row-actions"></th>
                       <th class="row-address">Address</th>
                       <th>Contacts</th>
+                      <th class="row-actions1"></th>
                     </tr>
                   </thead>
                   <tbody>
                     {{#each prospectInList}}
                     <tr>
-                      <td id="prospectListActions">
+                      <td id="row-actions">
                         {{#afModal title="Update prospect" omitFields="createdAt,updatedAt,owner" class="text-primary" collection="Prospects" operation="update" doc=_id}}
-                        <i class="fa fa-pencil dark-hover editRem" buttonContent="Edit prospect"></i>
-                        {{/afModal}}
-                        <hr>
-                        {{#afModal title="Delete prospect" class="text-danger" collection="Prospects" operation="remove" doc=_id}}
-                        <i class="fa fa-times dark-hover editRem" buttonContent="Delete prospect"></i>
+                        <i class="fa fa-pencil-square-o" buttonContent="Edit prospect"></i>
                         {{/afModal}}
                       </td>
                       {{#with address}}
@@ -68,6 +65,11 @@
                             </tbody>
                           </table>
                         </div>
+                      </td>
+                      <td>
+                        {{#afModal title="Delete prospect" class="text-danger" collection="Prospects" operation="remove" doc=_id}}
+                        <i class="fa fa-trash-o dark-hover" buttonContent="Delete prospect"></i>
+                        {{/afModal}}
                       </td>
                     </tr>
                     {{/each}}

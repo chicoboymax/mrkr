@@ -68,7 +68,19 @@ Schemas.Prospects = new SimpleSchema({
   },
   listId: {
     type: String,
-    optional: true
+    autoform: {
+      options: function () {
+        var options = [];
+        Lists.find().forEach(function (element) {
+          options.push({
+            label: element.name, value: element._id
+          })
+        });
+        return options;
+      }
+    }
+
+
   },
   createdAt: {
     autoform: {
