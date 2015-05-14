@@ -29,46 +29,6 @@ addProspectFormGoogle:{
 }
 });
 
-Template.addProspectForm.helpers({
-  settings: function() {
-    return {
-      collection: Prospects,
-      rowsPerPage: 10,
-      showFilter: true,
-      fields: [
-        {
-          'key': 'address.fullAddress',
-          label: 'Address'
-        },
-        {
-          'key': 'address.street',
-          label: 'Street'
-        }, {
-          'key': 'address.unit',
-          label: 'Unit'
-        }, {
-          'key': 'address.city',
-          label: 'City'
-        }, {
-          'key': 'address.state',
-          label: 'State'
-        }, {
-          'key': 'address.zip',
-          label: 'Zip/PC'
-        }, {
-          'key': 'contacts.0.name',
-          label: 'Name'
-        }, {
-          'key': 'contacts.0.phone',
-          label: 'Phone'
-        }, {
-          'key': 'contacts.0.notes',
-          label: 'Notes'
-        }
-      ]
-    };
-  }
-});
 
 Template.lists.helpers({
   prospect: function() {
@@ -79,7 +39,11 @@ Template.lists.helpers({
   },
   list: function() {
     return Lists.find();
-  }
+  },
+  isOwner: function() {
+      var project = Projects.findOne({_id:Session.get('active_project')});
+      return Meteor.userId() === project.userId;
+    }
 });
 
 Template.assigned.helpers({
@@ -90,7 +54,11 @@ Template.assigned.helpers({
   assignedTo:function(){
     var list = Lists.findOne({_id:this._id});
     return Meteor.users.find({_id:list.assignedTo});
-  }
+  },
+  isOwner: function() {
+      var project = Projects.findOne({_id:Session.get('active_project')});
+      return Meteor.userId() === project.userId;
+    }
 });
 
 

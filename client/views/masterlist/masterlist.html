@@ -43,9 +43,11 @@
 </template>
 
 <template name="deleteProspect">
-{{#afModal title="Delete prospect" class="text-danger" collection="Prospects" operation="remove" doc=_id}}
-<i class="fa fa-trash-o dark-hover" buttonContent="Delete prospect"></i>
-{{/afModal}}
+  {{#if isOwner}}
+  {{#afModal title="Delete prospect" class="text-danger" collection="Prospects" operation="remove" doc=_id}}
+  <i class="fa fa-trash-o dark-hover" buttonContent="Delete prospect"></i>
+  {{/afModal}}
+  {{/if}}
 </template>
 
 <template name="listN">

@@ -24,6 +24,7 @@
 	</div>
 </div>
 </template>
+
 <template name="project">
 <div class="col-md-3">
 	<div class="panel panel-default">
@@ -33,7 +34,7 @@
 				</p>
 				<p>
 					<h5>
-						<a href="/projects/{{_id}}"><h3>{{name}}</h3></a>
+						<a href="/projects/{{_id}}" class="eachProject" value="{{_id}}"><h3>{{name}}</h3></a>
 					</h5>
 				</p>
 			</h3>
@@ -43,7 +44,9 @@
 				<small>
 					Created on {{formatdate dateentered}}
 				</small>
+				{{#if isowner}}
 				<i class="fa fa-trash  deleteConfirmation"></i>
+				{{/if}}
 
 			</p>
 		</div>

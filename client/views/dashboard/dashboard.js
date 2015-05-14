@@ -20,10 +20,16 @@ Template.dashboard.helpers({
   projectToDelete:function(){
     return Session.get('projectToDelete');
   }
-})
+});
 Template.delconfirm.events({
   'click .deleteConfirmed':function(evt,tmpl){
     Meteor.call('removeProject',Session.get('projectToDelete'));
     Session.set('projectToDelete',null);
   }
-})
+});
+Template.project.helpers({
+  isowner:function(){
+    var project = Projects.findOne({_id:this._id});
+    return project.userId === Meteor.userId();
+  }
+});

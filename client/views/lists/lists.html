@@ -39,9 +39,11 @@
 						{{#each list}}
 						<tr class="eachList" value="{{_id}}">
 							<td id="prospectListActions">
+								{{#if isOwner}}
 								{{#afModal title="Edit list" omitFields="" class="text-primary" collection="Lists" operation="update" doc=_id}}
 								<i class="fa fa-pencil-square-o" buttonContent="Edit list"></i>
 								{{/afModal}}
+								{{/if}}
 							</td>
 							<td>
 								<p id="listName" class="listNameEdit">
@@ -59,9 +61,11 @@
 								</p>
 							</td>
 							<td>
+								{{#if isOwner}}
 								{{#afModal title="Delete list" class="text-danger" collection="Lists" operation="remove" doc=_id}}
 								<i class="fa fa-trash-o dark-hover" buttonContent="Delete list"></i>
 								{{/afModal}}
+								{{/if}}
 							</td>
 						</tr>
 						{{else}}
@@ -82,9 +86,12 @@
 		{{#each assignedTo}}
 		<div>
 		{{username}}
+		{{#if isOwner}}
 		<i class="fa fa-minus-circle removeAssignment"></i>
+		{{/if}}
 		</div>
 		{{else}}
+		{{#if isOwner}}
 		<select  name="userToAssign" class="userToAssign">
 			<option selected disabled hidden value=''>Assign a member</option>
 			{{#each members}}
@@ -92,6 +99,7 @@
 			{{/each}}
 		</select>
 		<i class="fa fa-plus-circle assignUser"></i>
+		{{/if}}
 		{{/each}}
 	</div>
 </template>
