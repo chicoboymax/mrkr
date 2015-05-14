@@ -68,6 +68,7 @@ Schemas.Prospects = new SimpleSchema({
   },
   listId: {
     type: String,
+    optional: true,
     autoform: {
       options: function () {
         var options = [];
