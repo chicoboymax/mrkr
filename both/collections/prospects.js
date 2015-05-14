@@ -6,14 +6,17 @@ Schemas.Prospects = new SimpleSchema({
     optional: true
   },
   'contacts.$': {
-    type: Object
+    type: Object,
+    optional: true
   },
   'contacts.$.name': {
     type: String,
+    optional: true,
     max: 50
   },
   'contacts.$.phone': {
     type: String,
+    optional: true,
     max: 10
   },
   'contacts.$.email': {
@@ -22,10 +25,14 @@ Schemas.Prospects = new SimpleSchema({
     regEx: SimpleSchema.RegEx.Email,
     max: 50
   },
-  'contacts.$.notes': {
-    type: String,
-    max: 500
-  },
+  'contacts.$.notes':  {
+      type: String,
+      optional: true,
+      max: 1000,
+      autoform: {
+         rows: 5
+      }
+   },
   'address.fullAddress': {
     type: String
   },
@@ -121,6 +128,9 @@ TabularTables.Prospects = new Tabular.Table({
     {width: "4%",  title: "",
       tmpl: Meteor.isClient && Template.editProspect
   },
+  {title: "List", data: "listId",
+    tmpl: Meteor.isClient && Template.listN
+},
     {data: "address.street", title: "Street"},
     {data: "address.unit", title: "Unit"},
     {data: "address.city", title: "City"},
@@ -128,6 +138,9 @@ TabularTables.Prospects = new Tabular.Table({
     {data: "address.zip", title: "ZIP/PC"},
     {width: "50%", data: "contacts.[]", title: "Contacts",
       tmpl: Meteor.isClient && Template.contacts
-  }
-  ]
+  },
+  {width: "4%",  title: "",
+    tmpl: Meteor.isClient && Template.deleteProspect
+}
+]
 });

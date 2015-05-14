@@ -3,3 +3,9 @@ Template.masterlist.helpers({
     return {project:Session.get('active_project')};
   }
 });
+
+Template.listN.helpers({
+  listName: function() {
+  return Lists.findOne({_id:this.listId});
+  }
+});

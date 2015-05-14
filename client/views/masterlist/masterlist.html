@@ -41,3 +41,15 @@
   <i class="fa fa-pencil-square-o" buttonContent="Edit prospect"></i>
   {{/afModal}}
 </template>
+
+<template name="deleteProspect">
+{{#afModal title="Delete prospect" class="text-danger" collection="Prospects" operation="remove" doc=_id}}
+<i class="fa fa-trash-o dark-hover" buttonContent="Delete prospect"></i>
+{{/afModal}}
+</template>
+
+<template name="listN">
+  {{#with listName}}
+  {{name}}
+  {{/with}}
+</template>

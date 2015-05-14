@@ -5,8 +5,5 @@ Template.projectView.helpers({
   prospectInList: function() {
     var list = Lists.findOne({_id:this._id});
     return Prospects.find({listId:list._id});
-  },
-  listOptions: function () {
-    return {placeholder: 'Choose a list', lists: true};
   }
 });
