@@ -43,18 +43,19 @@ Router.map(function() {
     }
   });
   this.route('projectView',{
-    path:'/projects/:id',
+    path:'/projects/:_id',
     layoutTemplate:'masterLayout',
     fastRender: true,
     loginRequired:'entrySignIn',
     waitOn:function(){
-      Meteor.subscribe('prospects',this.params.id);
+      Meteor.subscribe('prospects',this.params._id);
       Meteor.subscribe('directory');
+      Meteor.subscribe('lists',this.params._id);
       return Meteor.subscribe('projects');
     },
     data:function(){
-      Session.set('active_project',this.params.id);
-      return Projects.findOne({_id:this.params.id});
+      Session.set('active_project',this.params._id);
+      return Projects.findOne({_id:this.params._id});
     },
     onAfterAction:function(){
       SEO.set({

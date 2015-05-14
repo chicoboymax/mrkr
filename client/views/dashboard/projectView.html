@@ -15,6 +15,71 @@
             {{>members}}
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h2>My Lists</h2>
+            {{#each myLists}}
+            <div class="panel panel-primary ">
+              <div class="panel-heading"><h4>List {{name}}</h4></div>
+              <div id="prospectList" class="table-responsive">
+                <table class="table table-condensed">
+                  <thead>
+                    <tr>
+                      <th class="row-actions"></th>
+                      <th class="row-address">Address</th>
+                      <th>Contacts</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each prospectInList}}
+                    <tr>
+                      <td id="prospectListActions">
+                        {{#afModal title="Update prospect" omitFields="createdAt,updatedAt,owner" class="text-primary" collection="Prospects" operation="update" doc=_id}}
+                        <i class="fa fa-pencil dark-hover editRem" buttonContent="Edit prospect"></i>
+                        {{/afModal}}
+                        <hr>
+                        {{#afModal title="Delete prospect" class="text-danger" collection="Prospects" operation="remove" doc=_id}}
+                        <i class="fa fa-times dark-hover editRem" buttonContent="Delete prospect"></i>
+                        {{/afModal}}
+                      </td>
+                      {{#with address}}
+                      <td>
+                        <p id="prospectAdr">
+                          {{fullAddress}}
+                          {{#if unit}}
+                          <br>
+                          unit {{unit}}
+                          {{/if}}
+                        </p>
+                      </td>
+                      {{/with}}
+                      <td class="prospectList">
+                        <div class="table-responsive">
+                          <table id="contactsTable" class="table table-condensed">
+                            <thead>
+                              <tr>
+                                <th class="contactsHeader row-name">Name</th>
+                                <th class="contactsHeader row-phone">Phone</th>
+                                <th class="contactsHeader">Notes</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {{> contactDetails}}
+                            </tbody>
+                          </table>
+                        </div>
+                      </td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            {{else}}
+            <p>No list is assigned to you</p>
+            {{/each}}
+          </div>
+        </div>
       </div>
     </div>
   </div>

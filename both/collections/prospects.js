@@ -66,6 +66,10 @@ Schemas.Prospects = new SimpleSchema({
     },
     type: String,
   },
+  listId: {
+    type: String,
+    optional: true
+  },
   createdAt: {
     autoform: {
       omit: true
