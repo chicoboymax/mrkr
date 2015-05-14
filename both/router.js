@@ -111,6 +111,7 @@ Router.map(function() {
     loginRequired: 'entrySignIn',
     waitOn:function(){
       Meteor.subscribe('prospects',this.params._id);
+      Meteor.subscribe('lists',this.params._id);
       return Meteor.subscribe('projects');
     },
     data:function(){

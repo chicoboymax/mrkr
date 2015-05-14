@@ -35,3 +35,9 @@
     </tbody>
   </table>
 </template>
+
+<template name="editProspect">
+  {{#afModal title="Update prospect" omitFields="createdAt,updatedAt,owner" class="text-primary" collection="Prospects" operation="update" doc=_id}}
+  <i class="fa fa-pencil-square-o" buttonContent="Edit prospect"></i>
+  {{/afModal}}
+</template>

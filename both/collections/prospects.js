@@ -118,6 +118,9 @@ TabularTables.Prospects = new Tabular.Table({
   name: "MasterList",
   collection: Prospects,
   columns: [
+    {width: "4%",  title: "",
+      tmpl: Meteor.isClient && Template.editProspect
+  },
     {data: "address.street", title: "Street"},
     {data: "address.unit", title: "Unit"},
     {data: "address.city", title: "City"},
