@@ -2,7 +2,9 @@
   <div class="panel panel-primary">
     <div class="panel-heading"><h4>Members of the {{name}} project</h4></div>
     <div class="panel-body">
+      {{#if isowner ..}}
       {{>searchBox}}
+      {{/if}}
       <table class="table table-hover table-striped">
         {{#each members}}
         <tr><td width="250px">{{username}}</td>
