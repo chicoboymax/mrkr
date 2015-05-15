@@ -239,11 +239,11 @@ Template.afGooglePlace.rendered =function() {
   ELES.googleAttribution =this.find('div.lm-autoform-google-place-attribution');
   var eleDropdown =this.find('div.lm-autoform-google-place-predictions');
   var types =[];    //either [blank] or one or more of: 'establishment', 'geocode'
-  var componentRestrictions ={country:'ca'};
+  //var componentRestrictions ={country:'us'};
   var options = {
     //bounds: defaultBounds,
-    types: types,
-    componentRestrictions: componentRestrictions
+    types: types
+    //componentRestrictions: componentRestrictions
   };
 
   if(OPTS.type =='googleUI') {
