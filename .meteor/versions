@@ -42,6 +42,7 @@ check@1.0.5
 chuangbo:cookie@1.1.0
 cmather:handlebars-server@0.2.0
 coffeescript@1.0.6
+dburles:google-maps@1.0.9
 ddp@1.1.0
 deps@1.0.7
 ejson@1.0.6
@@ -80,9 +81,11 @@ manuelschoebel:ms-seo@0.4.1
 matteodem:easy-search@1.5.6
 meteor@1.1.6
 meteor-platform@1.2.2
-meteorhacks:fast-render@2.3.2
+meteorhacks:async@1.0.0
+meteorhacks:fast-render@2.4.0
 meteorhacks:inject-data@1.2.3
 meteorhacks:meteorx@1.0.2
+meteorhacks:npm@1.3.0
 meteorhacks:picker@1.0.2
 meteorhacks:unblock@1.1.0
 minifiers@1.1.5
@@ -93,7 +96,6 @@ mongo@1.1.0
 mongo-livedata@1.0.8
 mpowaga:string-template@0.1.0
 mquandalle:jade@0.2.9
-mrt:googlemaps@0.1.1
 mrt:moment@2.8.1
 mrt:underscore-string-latest@2.3.3
 multiply:iron-router-progress@1.0.1
@@ -133,8 +135,8 @@ webapp-hashing@1.0.3
 yogiben:admin@1.1.1
 yogiben:alerts@0.0.2
 yogiben:autoform-file@0.2.5
-yogiben:autoform-map@0.0.4
-yogiben:autoform-modals@0.3.3
+yogiben:autoform-map@0.1.1
+yogiben:autoform-modals@0.3.5
 yogiben:comments@0.1.0
 yogiben:favorites@0.0.4
 yogiben:helpers@0.0.6
